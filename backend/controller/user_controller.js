@@ -9,7 +9,7 @@ const csv = require("csv-parser");
 
 const createCsvWriter = require("csv-writer").createObjectCsvWriter;
 
-//create user
+// task1. create user:-
 exports.createUser = async (req, res) => {
   console.log("createUser called");
   try {
@@ -60,7 +60,7 @@ exports.createUser = async (req, res) => {
 };
 
 
-// analysisDonation
+//task2. analysisDonation:-
 exports.analysisDonation = async (req, res) => {
   const results = [];
   const donationByCity = {};
@@ -106,7 +106,7 @@ exports.analysisDonation = async (req, res) => {
 };
 
 
-//analysisVolenteers
+// task3. analysisVolenteers:-
 exports.analysisVolenteers = async (req, res) => {
   const files = req.files;
   const consolidatedData = new Map();
@@ -147,6 +147,7 @@ exports.analysisVolenteers = async (req, res) => {
 
   await processData();
 
+  
   // 1. Write consolidated CSV
   const consolidatedCsvWriter = createCsvWriter({
     path: "volunteers/single_volunteers_file.csv",
@@ -162,6 +163,7 @@ exports.analysisVolenteers = async (req, res) => {
   const dataSave=await VolenteersTable.bulkCreate(consolidatedData.values());
   console.log("dataSave", dataSave)
   await consolidatedCsvWriter.writeRecords([...consolidatedData.values()]);
+
 
   // 2: Generate summary
   const cityStats = {};
