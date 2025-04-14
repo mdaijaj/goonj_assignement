@@ -40,62 +40,43 @@ The program should:
 Objective:
 Process donation data from a CSV file (Donations.csv):
 
-Clean the data by handling missing values and converting columns to appropriate data types.
+1. Clean the data by handling missing values and converting columns to appropriate data types.
+2. Calculate and print the following:
 
-Calculate and print the following:
+- Total donations by city.
 
-Total donations by city.
+- Average donation amount per city.
 
-Average donation amount per city.
+- Number of donors who contributed more than ₹10,000.
 
-Number of donors who contributed more than ₹10,000.
+3. Visualize the total donations by city using a bar chart.
 
-Visualize the total donations by city using a bar chart.
-
-Example Usage:
+#### Example Usage:
 Install dependencies:
 
-bash
-Copy
-Edit
-npm install csv-parser lodash chart.js
+`npm install csv-parser lodash chart.js `
 Run the script:
-
-bash
-Copy
-Edit
-node donationsAnalysis.js
-The results will be printed to the console and the bar chart will be saved as donations_by_city.png.
 
 ## 🔁 Task 3: Workflow Automation - Volunteer Data
 Objective:
 Automate the processing of volunteer data:
 
-Merge three CSV files (volunteer_data_1.csv, volunteer_data_2.csv, volunteer_data_3.csv) into one consolidated file.
+1. Merge three CSV files (volunteer_data_1.csv, volunteer_data_2.csv, volunteer_data_3.csv) into one consolidated file.
 
-Remove duplicate entries based on Volunteer_ID.
+1. Remove duplicate entries based on Volunteer_ID.
 
-Generate a summary report that includes:
+3. Generate a summary report that includes:
 
-Total hours volunteered per city.
+- Total hours volunteered per city.
 
-Number of unique volunteers per city.
+- Number of unique volunteers per city.
 
-Save the summary report as volunteer_summary_report.csv.
+- Save the summary report as volunteer_summary_report.csv.
 
-Example Usage:
+#### Example Usage:
 Install dependencies:
-
-bash
-Copy
-Edit
-npm install csv-parser lodash fs
+`npm install csv-parser lodash fs `
 Run the script:
-
-bash
-Copy
-Edit
-node volunteerDataProcessing.js
 The summary report will be saved as volunteer_summary_report.csv.
 
 ## 📋 API Routes List
@@ -140,14 +121,8 @@ csv-parser: For reading CSV files.
 
 Lodash: For data manipulation.
 
-Chart.js: For creating bar charts.
-
 To install all required dependencies, run:
-
-bash
-Copy
-Edit
-npm install
+`npm install`
 
 `
 
