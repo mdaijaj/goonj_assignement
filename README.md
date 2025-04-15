@@ -8,8 +8,20 @@ This repository contains solutions for three key data engineering tasks:
 - Automating the workflow for volunteer data.
 
 The solutions are implemented in **Node.js** with various libraries for handling HTTP requests, working with databases, and processing CSV files.
-
 ---
+
+## 🧰 Requirements
+Dependencies:
+Axios: For making API requests.
+
+Sequelize / mysql2: For interacting with MySQL/PostgreSQL.
+
+csv-parser: For reading CSV files.
+
+Lodash: For data manipulation.
+
+To install all required dependencies, run:
+`npm install`
 
 ## 📌 Task 1: REST API Integration
 
@@ -79,51 +91,131 @@ Install dependencies:
 Run the script:
 The summary report will be saved as volunteer_summary_report.csv.
 
+
+## Project Setup
+
+Clone the repository and navigate to the project directory:
+```
+git clone https://github.com/mdaijaj/goonj_assignement.git
+```
+cd `goonj_assignement/backend` <br>
+Install dependencies:
+```
+npm i --f
+```
+Set up environment variables (e.g., change the file name example.env to .env) in .env:
+```
+DATABASE_HOST=localhost
+DATABASE_USER=root
+DATABASE_PASSWORD=aijaj123
+DATABASE_NAME=goonj
+```
+
+create database manually go to dbeaver or workbench or any other database ui tool and create database goonj
+or command line:- <br>
+``
+create database goonj
+``
+
+Start the server:
+
+```
+npm start
+```
+
 ## 📋 API Routes List
 Here’s a list of the available API routes for this project:
 
 ### Task 1 - User Data API:
 `
-Route: POST /api/createUser
-` <br>
-Description: Creates a new user in the system by storing user data fetched from the API.
+Route: http://localhost/api/createUser ` <br>
+`Method: Post ` <br>
+`Response:-{
+    "message": "Users fetched and saved successfully."
+}` <br>
 
-Controller: userController.createUser
+Description: Creates a new user in the system by storing user data fetched from the API.
 
 ### Task 2 - Donations Analysis API:
 `
-Route: POST /api/analyzeDonations
+Route: http://localhost/api/analyzeDonations ` <br>
+` Method: Post ` <br>
+`Payload: formData:-
+   key: file, 
+   value : Donation.csv file
+   `  <br>
+`Response:  
+"totalDonationsByCity": {
+        "Delhi": 174500,
+        "Mumbai": 28000,
+        "Bangalore": 73000,
+        "Ahmedabad": 2500,
+        "Chennai": 18000,
+        "Kolkata": 1003000,
+        "Hyderabad": 11000
+    },
+    "averageDonationsByCity": {
+        "Delhi": 34900,
+        "Mumbai": 9333.333333333334,
+        "Bangalore": 36500,
+        "Ahmedabad": 2500,
+        "Chennai": 9000,
+        "Kolkata": 501500,
+        "Hyderabad": 11000
+    },
+    "donorsOver10000": 6
+}
 ` <br>
+
 Description: Analyzes donation data from a provided CSV file.
-
-Controller: userController.analysisDonation
-
-File Upload: Uses uploadDonation.single('file') to upload a single donation file for analysis.
 
 ### Task 3 - Volunteers Analysis API:
 `
-Route: POST /api/analyzeVolunteers
-` <br>
+Route:  http://localhost/api/analyzeVolunteers ` <br>
+`Method: Post ` <br>
+`Payload: formData key: files, value :  file1.csv, file1.csv, file1.csv ` <br>
+`Response:  {
+    "message": "CSV files processed successfully.",
+    "consolidatedFile": "single_volunteers.csv",
+    "summaryReportFile": "volunteer_summary_report.csv",
+    "summaryReport": [
+        {
+            "City": "Delhi",
+            "Total_Hours": 11,
+            "Unique_Volunteers": 3
+        },
+        {
+            "City": "Hyderabad",
+            "Total_Hours": 6,
+            "Unique_Volunteers": 1
+        },
+        {
+            "City": "Bangalore",
+            "Total_Hours": 7,
+            "Unique_Volunteers": 2
+        },
+        {
+            "City": "Mumbai",
+            "Total_Hours": 13,
+            "Unique_Volunteers": 3
+        },
+        {
+            "City": "Ahmedabad",
+            "Total_Hours": 3,
+            "Unique_Volunteers": 1
+        },
+        {
+            "City": "Chennai",
+            "Total_Hours": 5,
+            "Unique_Volunteers": 1
+        },
+        {
+            "City": "Kolkata",
+            "Total_Hours": 2,
+            "Unique_Volunteers": 1
+        }
+    ]
+}` <br>
 
 Description: Analyzes volunteer data from multiple CSV files.
-
-Controller: userController.analysisVolunteers
-
-File Upload: Uses uploadVolunteer.array('files', 10) to upload up to 10 volunteer data files for analysis.
-
-## 🧰 Requirements
-Dependencies:
-Axios: For making API requests.
-
-Sequelize / mysql2: For interacting with MySQL/PostgreSQL.
-
-csv-parser: For reading CSV files.
-
-Lodash: For data manipulation.
-
-To install all required dependencies, run:
-`npm install`
-
-`
-
 
