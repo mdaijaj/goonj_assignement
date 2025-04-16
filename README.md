@@ -92,7 +92,7 @@ Run the script:
 The summary report will be saved as volunteer_summary_report.csv.
 
 
-## Project Setup
+## How to run project:-
 
 Clone the repository and navigate to the project directory:
 ```
